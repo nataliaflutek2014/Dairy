@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашний Флортайм: Дневник рефлексии</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        :root {
+            --bg-color: #f8f9fa;
+            --container-bg: #ffffff;
+            --primary-color: #007bff;
+            --primary-hover: #0056b3;
+            --text-color: #333;
+            --border-color: #dee2e6;
+            --section-header-bg: #e9ecef;
+            --feedback-bg: #e6f7ff;
+            --feedback-border: #91d5ff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #root {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .app-container {
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 24px 32px;
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .header p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .journal-section {
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background-color: var(--section-header-bg);
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .section-content {
+            padding: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .question-group {
+            margin-bottom: 16px;
+        }
+
+        .question-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .question-group textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        
+        .question-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        .feedback-box {
+            background-color: var(--feedback-bg);
+            border: 1px solid var(--feedback-border);
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .button:active {
+            transform: scale(0.98);
+        }
+        
+        .button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .button-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        .button-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .button-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .button-saved {
+            background-color: #28a745;
+            color: white;
+            cursor: default;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .app-container {
+                padding: 16px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
